@@ -1,5 +1,6 @@
 FROM php:5.5-apache
-MAINTAINER rafaelcgstz <rafaelcg_stz@hotmail.com>
+
+MAINTAINER Rafael Corrêa Gomes <rafaelcg_stz@hotmail.com>
 
 WORKDIR /var/www/htdocs
 COPY ./src /var/www/htdocs
@@ -20,7 +21,7 @@ RUN a2enmod rewrite
 RUN sed -i -e 's/\/var\/www\/html/\/var\/www\/htdocs/' /etc/apache2/apache2.conf
 
 RUN chown -R www-data:www-data /var/www/htdocs
-RUN apt-get update && apt-get install -y mysql-client-5.5 libxml2-dev wget zip
+RUN apt-get update && apt-get install -y mysql-client-5.5 libxml2-dev wget zip vim
 RUN docker-php-ext-install soap
 
 RUN mkdir ~/.dev-alias \
